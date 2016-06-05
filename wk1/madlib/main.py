@@ -19,7 +19,7 @@ occupation = raw_input('what is your dream job: ')
 sex = raw_input('what is your sex: type \"1\" for male or \"2\" for female: ')
 old_age = raw_input('write the first NUMBER that comes to mind when you think of... \"old\": ')
 young_age = raw_input('what is the first NUMBER that comes to mind when you think of... \"young\": ')
-number = raw_input('type in a number from 1-25: ')
+number = raw_input('type in a number from 0-3: ')
 greet_adverb = raw_input('name an adverb: ')
 greet_nickname = raw_input('name a cheesy or funny nickname: ')
 object_plural = raw_input('name an object (plural): ')
@@ -28,7 +28,17 @@ old_term = raw_input('a phrase or term to describe something old: ')
 verb = raw_input('name an action verb: ')
 mad_phrase = raw_input('To get rid of people asking 4 donations or volunteer work, you say: ')
 nice_phrase = raw_input('Imagine \"The One\" asks you out. You say: ')
-salutation = ['Love, Mom & Dad', 'Later sis, Big Brother', 'Sincerely, Uncle Sam']
+
+#function to construct the salutation at the end of the story
+def salutations_picker (x, y):
+    y = y % 2
+    person = [' ', 'worst enemy', 'mom and dad', 'uncle Joe']
+    phrase = ' used to say, in order to succeed keep your ' + body_part + ' in the '\
+             + object_plural + ' and out of the ' + greet_nickname
+    salutation = 'well ' + x + 'like your' + person[int(y)] + phrase
+    return salutation
+salutations = salutations_picker(name, 16)
+
 # use user sex to determine the name prefix when greeting the user
 prefix = ["Mr. ", "Ms./Mrs. "]
 if sex == 1:
@@ -39,7 +49,9 @@ else:
     greeting = "earthling, " + name
 
 # MadLib welcome phrase concatenation
-greet = "Thank you for your responses. Welcome to your MadLib Story, " + greeting
+hello = ['hi', 'hello', 'hello there', 'What is up', 'How you doing']
+for h in hello:
+    greet = h + "Thank you for your responses. Welcome to your MadLib Story, " + greeting
 
 # MadLib story
 message = '''
@@ -56,7 +68,7 @@ Lastly, if ever asked to stay after work hours and \"volunteer\" your time, neve
 \t\" {mad_phrase} \"\n
 instead look her square in the eyes and with a great big smile say,\n
 \t\" {nice_phrase} \"\n
-{salutation[0]}\n
+{salutations}\n
 xo\n
 \n
 MadLib Credits\n
