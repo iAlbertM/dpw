@@ -1,42 +1,68 @@
 '''
-Intro to Python: MadLibsss
+Project Info
+Intro to Python: MadLib
 author: Albert Martinez
 class:Design Patterns for Web Programming DPW-1606
 instructor: Rebecca Carroll
 '''
-
-#gather user input for MadLib story using 'raw_input()' and store in a  variable with a sensible name
-age = raw_input('write the first number that comes to mind... now: ')
-occupation = raw_input('name an occupation: ')
-adverb = raw_input('name an adverb: ')
-nickname = raw_input('name a cheesy or funny nickname: ')
+# MadLib details
+madlib = dict() # instantiating the user_info dictionary
+# assigning key:value pairs to the user_info dictionary
+madlib = {'title':'The Way it Works at Work', 'author': 'Albert Martinez', 'course': 'DPW1606'}
+title = madlib['title']
+author = madlib['author']
+course = madlib['course']
+# Questions: gather user input for madlib story using 'raw_input()' and store in a  variable with a sensible name
+name = raw_input('what is your name: ')
+age = raw_input('how young are you: ')
+occupation = raw_input('what is your dream job: ')
+sex = raw_input('what is your sex: type \"1\" for male or \"2\" for female: ')
+old_age = raw_input('write the first NUMBER that comes to mind when you think of... \"old\": ')
+young_age = raw_input('what is the first NUMBER that comes to mind when you think of... \"young\": ')
+number = raw_input('type in a number from 1-25: ')
+greet_adverb = raw_input('name an adverb: ')
+greet_nickname = raw_input('name a cheesy or funny nickname: ')
 object_plural = raw_input('name an object (plural): ')
 body_part = raw_input('name a body part: ')
 old_term = raw_input('a phrase or term to describe something old: ')
-large_number = raw_input('type in a crazy number: ')
 verb = raw_input('name an action verb: ')
-angry_phrase = raw_input('Imagine your getting married first thing in the morning. Great right? Just wait...'
-                         'You haven\'t slept in 2 days due to your neighbor\'s construction project. He finished and you finally get to bed at 10pm the night before your wedding. Your sibling annoyingly staying with you until the wedding wakes you up at 4am with a air horn in your ear. What are the words that come to mind... hmm? : ')
-nice_phrase = raw_input('Imagine everything went just absolutely perfect. Your new husband turns to you and asks ready for the rest of our lives together?" You would respond: ')
-annoying_person = raw_input('the most annoying person in your life: ')
+mad_phrase = raw_input('To get rid of people asking 4 donations or volunteer work, you say: ')
+nice_phrase = raw_input('Imagine \"The One\" asks you out. You say: ')
+salutation = ['Love, Mom & Dad', 'Later sis, Big Brother', 'Sincerely, Uncle Sam']
+# use user sex to determine the name prefix when greeting the user
+prefix = ["Mr. ", "Ms./Mrs. "]
+if sex == 1:
+    greeting = str(prefix[0]) + name
+elif sex == 2:
+    greeting = str(prefix[1]) + name
+else:
+    greeting = "earthling, " + name
 
-#MadLib story with placeholder keywords to be filled in by the user input
-madlib = '''
-The Way it Works at Work
-So you are now, what {age} years old, right? You think you know how it works in the {occupation} world
-just remember these few tips:
-When you greet a coworker in the breakroom say, "Hey, working hard or {adverb} working?" This shows them you are " The {nickname} ."
-Make friends with the cleaning staff, they always know where the good {object_plural} are.
-Be nice to your boss. Kiss {body_part} to stay on her good side.
-If your boss ever asks you to guess her age, REMEMBER:
-If she looks {old_term} , shave off {large_number} from your original guess and pray she doesn't {verb} you.
-If she looks young, repeat the same step as before.
-Lastly, if ever asked to stay overtime and work overtime without getting overtime because it's "volunteer work",
-never say, " {angry_phrase} " instead say, " {nice_phrase} "
-Good luck,
-Love {annoying_person}
-xoxo
+# MadLib welcome phrase concatenation
+greet = "Thank you for your responses. Welcome to your MadLib Story, " + greeting
+
+# MadLib story
+message = '''
+{greet}\n
+{title}\n
+Hey {name}. Your Mom and Dad told me your doing well in school and close to graduating.\n
+So you're now, what, {age} years old, right? Getting ready for a real world job is a big deal. Let me give you a few tips that you should remember:\n
+\tWhen you greet a coworker in the break room say, \"Hey, working hard or {greet_adverb} working?\" This shows them you are \" The {greet_nickname} .\"\n
+\tMake friends with the cleaning staff, they always know where the good {object_plural} are.\n
+\tIf your boss ever asks you to guess her age, DON'T but If you must, REMEMBER:\n
+\t\tIf she looks {old_term}, which is anything {old_age} years old and above, shave off {number} from your original guess and pray she doesn't {verb} you.\n
+\t\tIf she looks young, which is anything under {young_age}, repeat the same step as above.\n
+Lastly, if ever asked to stay after work hours and \"volunteer\" your time, never say:\n
+\t\" {mad_phrase} \"\n
+instead look her square in the eyes and with a great big smile say,\n
+\t\" {nice_phrase} \"\n
+{salutation[0]}\n
+xo\n
+\n
+MadLib Credits\n
+{title}\n
+created by:\t{author}\n
+course:\t{course}
 '''
-
-madlib = madlib.format(**locals())
-print madlib
+message = message.format(**locals())
+print message
