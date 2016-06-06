@@ -5,10 +5,6 @@ author: Albert Martinez
 class:Design Patterns for Web Programming DPW-1606
 instructor: Rebecca Carroll
 '''
-'''
-
-
-'''
 madlib = dict() # instantiating the user_info dictionary
 # then assigning key:value pairs to the user_info dictionary
 madlib = {'title': 'The Way it Works at Work', 'author': 'Albert Martinez', 'course': 'DPW1606'}
@@ -67,6 +63,9 @@ for h in hello:
 
 # MadLib story
 message = '''
+\n
+MADLIB
+\n
 {greet}\n
 {title}\n
 Hey {name}. Your Mom and Dad told me your doing well in school and close to graduating.\n
