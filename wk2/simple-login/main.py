@@ -37,11 +37,13 @@ class MainHandler(webapp2.RequestHandler):
 			</p>
 		<p>
 		<p class="input-field">
-			<label for="services">Services Wanted</label>
-			<p class="input-field"><input type="checkbox" name="services" value="Cut" />Cut</p>
-			<p class="input-field"><input type="checkbox" name="services" value="Color" />Color</p>
-			<p class="input-field"><input type="checkbox" name="services" value="Style" />Style</p>
-			<p class="input-field"><input type="checkbox" name="services" value="Extensions" />Extensions</p>
+		    Services Wanted
+			    <select name="services">
+				    <p class="input-field"><option value="Cut" />Cut</option></p>
+				    <p class="input-field"><option value="Color" />Color</option></p>
+				    <p class="input-field"><option value="Style" />Style</option></p>
+				    <p class="input-field"><option value="Extensions" />Extensions</option></p>
+			    </select>
 		<p>
 		<p class="input-field">
 			<label for="hair_length">Your Hair Length</label>
