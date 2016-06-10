@@ -1,0 +1,350 @@
+/* 
+================================================================================
+CSS RESET
+================================================================================ */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+::after,
+::before {
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: "Source Sans Pro", "Roboto", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+    vertical-align: baseline;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+/* HTML5 - Older browser support
+======================================== */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+div {
+    display: block;
+}
+
+/* BOLD
+======================================== */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+/* SUBSCRIPT + SUPERSCRIPT
+======================================== */
+
+sub,
+sup {
+    /* Specified in % so that the sup/sup is the
+right size relative to the surrounding text */
+    font-size: 75%;
+    /* Zero out the line-height so that it doesn't
+interfere with the positioning that follows */
+    line-height: 0;
+    /* Where the magic happens: makes all browsers position
+the sup/sup properly, relative to the surrounding text */
+    position: relative;
+    /* Note that if you're using Eric Meyer's reset.css, this
+is already set and you can remove this rule */
+    vertical-align: baseline;
+}
+
+sup {
+    /* Move the superscripted text up */
+    top: -0.5em;
+}
+
+sub {
+    /* Move the subscripted text down, but only
+half as far down as the superscript moved up */
+    bottom: -0.25em;
+}
+
+/* BASE FONT
+======================================== */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font: normal normal 1em/1.5 "Source Sans Pro", sans-serif;
+}
+
+body {
+    font-size: 1.6rem;
+}
+
+/* LISTS - Clear bullets
+======================================== */
+
+ol,
+ul {
+    list-style: none;
+    list-style-type: none;
+}
+
+@media (max-width: 600px;
+) {
+    nav li a {
+        display: block;
+    }
+}
+
+/* QUOTES
+======================================== */
+
+blockquote,
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+q::before,
+blockquote::before {
+    content: open-quote;
+}
+
+q::after,
+blockquote::after {
+    content: close-quote;
+}
+
+/* TABLES
+======================================== */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* TEXTAREA - restrict resize to vertical only
+======================================== */
+
+textarea {
+    resize: vertical;
+}
+
+/* IMAGES - remove gap beteen img and container bttm
+======================================== */
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+/* HORIZONTAL RULE
+======================================== */
+
+hr {
+    box-sizing: border-box;
+    display: block;
+    height: 1px;
+    border-top: 1px solid #ccc;
+    margin: 1.6rem auto;
+    padding: 0;
+}
+
+/*____________________________________________*/
+
+/*  CSS RESET ^^   &&   CSS STYLING BELOW  vv */
+
+/*____________________________________________*/
+
+body {
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    /* padding: 10px 2%; */
+    /* margin-top: 90px; */
+}
+
+body > div {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1em;
+    margin: 6rem auto;
+}
+
+header,
+footer {
+    padding: 0.5em 0;
+    background: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Roboto Condensed", "Roboto", sans-serif;
+    margin: 1rem 0;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 100;
+    letter-spacing: 10px;
+}
+
+h2 {
+    color: rgba(25, 25, 112, 0.7);
+    font-weight: 100;
+    font-size: 4rem;
+}
+
+h3 {
+    color: rgba(255, 66, 0, 0.76);
+    font-size: 2.4rem;
+}
+
+p {
+    font-size: 1.6rem;
+    color: rgb(135, 125, 136);
+    color: rgba(135, 125, 136, 1);
+}
+
+html {
+    width: 100%
+}
+
+body {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    font: normal normal 100%/1.5 'Acumin semi-condensed Pro', 'Source Sans Pro', 'sans-serif';
+    padding: 5px 2%;
+    margin: auto;
+}
+
+form {
+    width: 100%;
+    max-width: 960px;
+    margin: auto;
+    background: rgba(250, 250, 250, 0.8);
+    padding: 15px 30px;
+}
+
+label {
+    font-weight: bolder;
+}
+
+.input-field {
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+form > p.input-field {
+}
+
+input {
+    line-height: 2;
+    padding: 2px 5px;
+    margin: 30px 2%;
+}
+
+select,
+input[type="color" i
+
+]
+[list] {
+    background-color: #474747;
+    margin-left: 2%;
+    color: white;
+    padding: 4px;
+}

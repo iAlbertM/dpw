@@ -28,20 +28,23 @@ class MainHandler(webapp2.RequestHandler):
                         <label for="name">Name</label>
                         <input type="text" placeholder="name" name="name">
                     </p>
+                    <hr>
                     <p class="input-field">
                         <label for="email">Email</label>
                         <input type="email" placeholder="Email" name="email">
                     </p>
+                    <hr>
                     <p class="input-field">
                         <label for="gender">Gender</label>
-                        <p class="input-field">
+                        <p>
                             <input type="radio" name="gender" value="Male"> Male
                         </p>
-                        <p class="input-field">
+                        <p>
                             <input type="radio" name="gender" value="Female"> Female
                         </p>
                     </p>
-                    <p class="input-field"> Services Wanted
+                    <hr>
+                    <p> Services Wanted
                         <select name="services">
                             <p class="input-field">
                                 <option value="Cut" />Cut</option>
@@ -57,25 +60,27 @@ class MainHandler(webapp2.RequestHandler):
                             </p>
                         </select>
                     </p>
+                    <hr>
                     <p class="input-field">
                         <label for="hair_length">Your Hair Length</label>
                         <p class="input-field">
-                            <input type="radio" name="hair_length" value="xshort"> Super Short - <br/>
-                            Think Demi Moore in Ghost
+                            <input type="radio" name="hair_length" value="xshort"> Super Short -
+                            <br/> Think Demi Moore in Ghost
                         </p>
                         <p class="input-field">
-                            <input type="radio" name="hair_length" value="short"> Short - <br/>
-                            Think Rihanna Bob
+                            <input type="radio" name="hair_length" value="short"> Short -
+                            <br/> Think Rihanna Bob
                         </p>
                         <p class="input-field">
-                            <input type="radio" name="hair_length" value="medium"> Medium - <br/>
-                            Think Cameron Diaz in The Sweetest Thing
+                            <input type="radio" name="hair_length" value="medium"> Medium -
+                            <br/> Think Cameron Diaz in The Sweetest Thing
                         </p>
                         <p class="input-field">
-                            <input type="radio" name="hair_length" value="long"> Long - <br/>
-                            Think current Selena Gomez
+                            <input type="radio" name="hair_length" value="long"> Long -
+                            <br/> Think current Selena Gomez
                         </p>
                     </p>
+                    <hr>
                     <input type="submit" value="submit" />
                 </form>
         '''
