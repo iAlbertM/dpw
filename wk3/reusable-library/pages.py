@@ -1,10 +1,75 @@
 class Page(object):  # creating Page class to serve as template for other pages
     def __init__(self):  # initializing Page class
-        # setting defualt values for Page class
+        # setting default values for Page class attributes
+        # all code that will go in the <head></head> of the HTML doc
+        self.__head = '''
+            <!DOCTYPE html>
+            <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>{self.title}</title>
+                    <link href='{self.css}' rel='stylesheet' />
+                </head>
+                <body>
+            '''
+        # closing tags to complete the html document
+        self.__close = '''
+                </body>
+            </html>
+            '''
+
+        ''' Main content html elements '''
+        # html blank body attribute to be filled later by the form or result attr.
+        self.__body = ''
+
+        # the form body and form html elements
+        self.__form = '''
+            <header>
+                <h1>Price Checkr</h1>
+            </header>
+            <form method="get">
+                <h2>Item Info</h2>
+                <p class="input-field">
+                    <label for="item_name">Item Name</label>
+                    <input type="text" placeholder="item name" name="item_name">
+                </p>
+                <hr>
+                <p class="input-field"><label for="original_price">
+                Original Price <span class="glyph">$</span></label>
+                    <input type="number" placeholder="Original price"
+                    name="original_price">
+                </p>
+                <hr>
+                <p class="input-field">
+                    <label for="discount">Discount <span class="glyph">%</span> </label>
+                    <input type="number" placeholder="Discount" name="discount">
+                </p>
+                <hr>
+                <p class="input-field">
+                    <label for="qty">Quantity <span class="glyph">#</span> </label>
+                    <input type="text" placeholder="qtyname" name="qty">
+                </p>
+                <hr>
+                <input type="submit" value="submit" />
+            </form>
+            '''
+        # defining the result body contents attribute
+        self.__result = '''
+        <header>
+            <h2>Details</h2>
+        </header>
+        <div class ="details">
+            <p> The {self.item_name} was originally priced at ${self.original_price}.The item's new price with the
+            {discount}% discount is: </p>
+            <p id ="discount_price">${discount_price}</p>
+        </div>
+        '''
         self.__title = 'My Title'  # private property to hold: html title
         self.__css = 'css/main.css'  # private property to hold: path to css file
         self.__js = 'js/main.js'  # private property to hold: path to js file
-        self.__complete_page = ''
+        self.__complete_page = (self.head + self.body + self.close)
+        self.__form_page = (self.head + self.body + self.form + self.close)
+        self.__result_page = (self.head + self.body + self.result + self.close)
 
     @property
     def title(self):
@@ -34,6 +99,22 @@ class Page(object):  # creating Page class to serve as template for other pages
     def complete_page(self):
         return self.__complete_page
 
+    @property
+    def form(self):
+        return self.__form
+
+    @property
+    def result(self):
+        return self.__result
+
+    @property
+    def form_page(self):
+        return self.__form_page
+
+    @property
+    def result_page(self):
+        return self.__result_page
+
     @title.setter
     def title(self, new_title):
         self.__title = new_title
@@ -58,132 +139,22 @@ class Page(object):  # creating Page class to serve as template for other pages
     def body(self, new_body):
         self.__body = new_body
 
-        ''' Opening and closing html elements '''
-        # all code that will go in the <head></head> of the HTML doc + opening <body> tag
-        self.__head = '''
-        <!DOCTYPE html>
-        <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <title>{self.title}</title>
-                <link href='{self.css}' rel='stylesheet' />
-            </head>
-            <body>
-        '''
-        # closing tags to complete the html document
-        self.__close = '''
-            </body>
-        </html>
-        '''
+    @complete_page.setter
+    def complete_page(self, new_complete_page):
+        self.__complete_page = new_complete_page
 
-        ''' Main content html elements '''
-        # html blank body attribute to be filled later by the view class
-        self.__body = ''
+    @form.setter
+    def form(self, new_form):
+        self.__form = new_form
 
-        self.__complete_page = (self.head + self.body + self.close)
+    @result.setter
+    def result(self, new_result):
+        self.__result = new_result
 
-forms_page = Page()
-forms_page.body = '''
-    <header>
-        <h1>Price Checkr</h1>
-    </header>
-    <form method="get">
-        <h2>Item Info</h2>
-        <p class="input-field">
-            <label for="item_name">Item Name</label>
-            <input type="text" placeholder="item name" name="item_name">
-        </p>
-        <hr>
-        <p class="input-field">
-            <label for="original_price">Original Price <span class="glyph">$</span> </label>
-            <input type="number" placeholder="Original price" name="original_price">
-        </p>
-        <hr>
-        <p class="input-field">
-            <label for="discount">Discount <span class="glyph">%</span> </label>
-            <input type="number" placeholder="Discount" name="discount">
-        </p>
-        <hr>
-        <p class="input-field">
-            <label for="qty">Quantity <span class="glyph">#</span> </label>
-            <input type="text" placeholder="qtyname" name="qty">
-        </p>
-        <hr>
-        <input type="submit" value="submit" />
-    </form>
-'''
-results_page = Page()
-results_page.body = '''
-    <header>
-        <h2>Details</h2>
-    </header>
-    <div class ="details">
-        <p> The {self.item_name} was originally priced at ${self.original_price}.The item's new price with the
-        {discount}% discount is: </p>
-        <p id ="discount_price">${discount_price}</p>
-    </div>
-'''
+    @form_page.setter
+    def form_page(self, new_form_page):
+        self.__form_page = new_form_page
 
-        if self.request.GET:
-            self.results_body = self.results_body.format(**locals())
-            self.response.write(self.__results_head + self.results_body +
-                                self.results_close)
-            self.response.write()
-            self.head + self.body + self.close)
-            self.all = self.all.format(**locals())
-
-
-
-
-
-
-        ''' Final page output  '''
-
-        '''
-        # variable to concatenate html elements for page template
-        self.page = ''
-        # variable to concatenate all form page elements
-        self.__form = ''
-        # variable to concatenate results page elements
-        self.__results = ''
-
-        if self.request.GET:
-            # store info from the form
-            self.item_name = self.request.GET['item_name']
-            self.original_price = self.request.GET['original_price']
-            self.discount = self.request.GET['discount']
-            self.qty = self.request.GET['qty']
-            # form data submitted + stored in variables I can use to populate placeholders
-            self.__results_body =
-        < header >
-        < h2 > Details / h2 >
-        < / header >
-        < div
-
-
-        class ="details" >
-
-        < p > The
-        {self.item_name}
-        was
-        originally
-        priced
-        at ${self.original_price}.The
-        item
-        's new price with
-        the
-        {discount} % discount is: < / p >
-        < p
-        id = "discount_price" >${discount_price} < / p >
-        < / div >
-
-         # populate the placeholder content with data stored from the self.request.GET method
-         self.results_body = self.results_body.format(**locals())
-         # show page in browser with user data submitted via the form
-         self.response.write(self.results_head + self.results_body + self.results_close)
-        else:
-         # otherwise show the page with a blank form
-         self.response.write(self.form_head + self.form_body + self.form_close)
-
-
-'''
+    @result_page.setter
+    def result_page(self, new_result_page):
+        self.__result_page = new_result_page
