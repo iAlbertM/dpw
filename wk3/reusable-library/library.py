@@ -1,24 +1,57 @@
-if self.request.GET:
-    # store info from the form
-    item_name = self.request.GET['item_name']
-    original_price = self.request.GET['original_price']
-    discount = self.request.GET['discount']
-    qty = self.request.GET['qty']
-    # form data submitted + stored in variables I can use to populate placeholders
-    results_body = '''
-           <header>
-               <h2>Details/h2>
-           </header>
-           <div class="details">
-               <p>The {self.item_name} was originally priced at ${self.original_price}. The item's new price with
-                   the {discount}% discount is:  </p>
-               <p id="discount_price">${discount_price}</p>
-           </div>
-   '''
-    # populate the placeholder content with data stored from the self.request.GET method
-    results_body = results_body.format(**locals())
-    # show page in browser with user data submitted via the form
-    self.response.write(self.results_head + self.results_details + self.results_close)
-else:
-    # otherwise show the page with a blank form
-    self.response.write(self.form_head + self.form_body + self.form_close)
+class Item(object):
+    def __init__(self):
+        self.__name = self.request.GET['item_name']
+        self.__original_price = 0.00
+        self.__discount = 0
+        self.__qty = 1
+        self.get_discount_amount()
+        self.get_discount_price()
+        self.get_discount_savings()
+        self.discount_amount = 0
+        self.discount_price = 0
+        self.savings = 0
+
+    @property
+    def name(self):
+        return self.__name
+
+    @property
+    def original_price(self):
+        return self.__original_price
+
+    @property
+    def discount(self):
+        return self.__discount
+
+    @property
+    def qty(self):
+        return self.__qty
+
+    @name.setter
+    def name(self, new_name):
+        self.__name = new_name
+
+    @original_price.setter
+    def original_price(self, new_original_price):
+        self.__original_price = new_original_price
+
+    @discount.setter
+    def discount(self, new_discount):
+        self.__discount = new_discount
+
+    @qty.setter
+    def qty(self, new_qty):
+        self.__qty = new_qty
+
+    def get_discount_amount(self):
+        self.__discount_amount = ((self.discount / 100) * self.original_price)
+        return self.__discount_amount
+
+    def get_discount_price(self):
+        self.__discount_price = self.__original_price - self.__discount_amount
+        return self.__discount_price
+
+    def get_discount_savings(self):
+        self.__savings = self.__original_price  - self.__discount_price
+        return self.__savings
+
