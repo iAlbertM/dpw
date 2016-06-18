@@ -1,42 +1,49 @@
 import webapp2
-from library import Item
-from pages import Page
+from library import SaleItem
+from pages import FormPage, ResultPage
 
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        p = Page()
-        i = Item()
-        p.css = "css/main.css"
-        p.title = 'Albert Martinez | Reusable Library | DPW-1606 WDDBS Full Sail University'
+        fp = FormPage()
+        rp = ResultPage()
+
         if self.request.GET:
             # store info from the form
-            item_name = self.request.GET['item_name']
-            original_price = self.request.GET['original_price']
+            item = self.request.GET['item_name']
+            price = self.request.GET['original_price']
             discount = self.request.GET['discount']
             qty = self.request.GET['qty']
-
-            # replace the empty body attribute with the result html content since we know the form has
-            # been submitted and user data has been stored
-            p.body = '''
-            <header>
-            <h2>Details</h2>
-        </header>
-        <div class ="details">
-            <p> The {self.item_name} was originally priced at ${self.original_price}.The item's new price with the
-            {discount}% discount is: </p>
-            <p id ="discount_price">${discount_price}</p>
-        </div>
+            i = SaleItem(item, price, discount, qty)
+            rp.body = '''
+                    <header>
+                        <h1>PriceCheckr</h1>
+                    </header>
+                    <div>
+                        <h2>Details</h2>
+                    </div>
+                    <div class="details">
+                        <p> The {i.item} orignal price of ${i.price},
+                        after applying the {i.discount}%  discount, the new price is:</p>
+                        <p id="discount_price">${i.discount_price}</p>
+                        <p id="savings">You just saved $<span>{i.discount_savings}</p>
+                    </div>
             '''
-            # use the stored user entered data and populate the placeholder fields in the result page
-            # using the locals() method we can pupulate these placeholder fields with stored user data
-            p.body = p.body.format(**locals())
-            # now that all data is filled in and ready to show, write all data to the browser for the user to see
-            self.response.write(p.complete_page)
+            rp.body = rp.body.format(**locals())
+            rp.print_page()
+
+            self.response.write(i.get_discount_amount(discount))
+
+            print(i.get_discount_price())
+            print(i.get_discount_saving())
+
+            self.response.write(rp.print_page())
         else:
-            # if no data has been entered via the form then load the page with the empty form
-            p.body = p.form
-            self.response.write(p.complete_page)
+            self.response.write(fp.print_page())
+
+        # show discount amount
+        # display final discount price
+        # show user how much they saved
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
