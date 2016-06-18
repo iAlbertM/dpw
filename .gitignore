@@ -22,3 +22,7 @@ wk3/videos/ReusableLibraries-pt3.mov
 wk3/videos/ReusableLibraries-pt2.mov
 
 wk3/reusable_library/ReusableLibraries-*.mov
+
+*.pyc
+
+*.pyc
