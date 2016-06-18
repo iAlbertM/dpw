@@ -1,31 +1,26 @@
-class Page(object):  # creating Page class to serve as template for other pages
-    def __init__(self):  # initializing Page class
-        # setting default values for Page class attributes
+# first page view class: FormPage
+class FormPage(object):
+    # initializing Page class
+    def __init__(self):
+        # private property to hold: path to css file
+        self.__css = 'css/main.css'
+
         # all code that will go in the <head></head> of the HTML doc
         self.__head = '''
-            <!DOCTYPE html>
-            <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <title>{self.title}</title>
-                    <link href='{self.css}' rel='stylesheet' />
-                </head>
-                <body>
-            '''
-        # closing tags to complete the html document
-        self.__close = '''
-                </body>
-            </html>
-            '''
-
-        ''' Main content html elements '''
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <title>"Albert Martinez | Reusable Library | DPW-1606 WDDBS Full Sail University"</title>
+                <link href={self.css}; rel='stylesheet' />
+        </head>
+        <body>
+        '''
+        
         # html blank body attribute to be filled later by the form or result attr.
-        self.__body = ''
-
-        # the form body and form html elements
-        self.__form = '''
+        self.__body = '''
             <header>
-                <h1>Price Checkr</h1>
+                <h1>PriceCheckr</h1>
             </header>
             <form method="get">
                 <h2>Item Info</h2>
@@ -52,109 +47,129 @@ class Page(object):  # creating Page class to serve as template for other pages
                 <hr>
                 <input type="submit" value="submit" />
             </form>
-            '''
-        # defining the result body contents attribute
-        self.__result = '''
-        <header>
-            <h2>Details</h2>
-        </header>
-        <div class ="details">
-            <p> The {self.item_name} was originally priced at ${self.original_price}.The item's new price with the
-            {discount}% discount is: </p>
-            <p id ="discount_price">${discount_price}</p>
-        </div>
         '''
-        self.__title = 'My Title'  # private property to hold: html title
-        self.__css = 'css/main.css'  # private property to hold: path to css file
-        self.__js = 'js/main.js'  # private property to hold: path to js file
-        self.__complete_page = (self.head + self.body + self.close)
-        self.__form_page = (self.head + self.body + self.form + self.close)
-        self.__result_page = (self.head + self.body + self.result + self.close)
+      
+        # closing tags to complete the html document
+        self.__close = '''
+        </body>
+        </html>
+        '''  
+        
+        self.complete = ""
 
-    @property
-    def title(self):
-        return self.__title
+        self.complete = self.head + self.body + self.close
+        self.complete = self.complete.format(**locals())
 
     @property
     def css(self):
         return self.__css
-
-    @property
-    def js(self):
-        return self.__js
+    
+    @css.setter
+    def css(self, new_css):
+        self.__css = new_css
 
     @property
     def head(self):
         return self.__head
-
-    @property
-    def close(self):
-        return self.__close
+    
+    @head.setter
+    def head(self, new_head):
+        self.__head = new_head
 
     @property
     def body(self):
         return self.__body
 
-    @property
-    def complete_page(self):
-        return self.__complete_page
+    @body.setter
+    def body(self, new_body):
+        self.__body = new_body
 
     @property
-    def form(self):
-        return self.__form
-
-    @property
-    def result(self):
-        return self.__result
-
-    @property
-    def form_page(self):
-        return self.__form_page
-
-    @property
-    def result_page(self):
-        return self.__result_page
-
-    @title.setter
-    def title(self, new_title):
-        self.__title = new_title
-
-    @css.setter
-    def css(self, new_css):
-        self.__css = new_css
-
-    @js.setter
-    def js(self, new_js):
-        self.__js = new_js
-
-    @head.setter
-    def head(self, new_head):
-        self.__head = new_head
+    def close(self):
+        return self.__close
 
     @close.setter
     def close(self, new_close):
         self.__close = new_close
 
+    def print_page(self):
+        all = self.__head + self.__body + self.__close
+        return all
+
+
+# second page view class: ResultPage
+class ResultPage(object):
+    # initializing Page class
+    def __init__(self):
+        self.__title = 'Albert Martinez | Reusable Library: Results Page'
+        # private property to hold: path to css file
+        self.__css = 'css/main.css'
+        # all code that will go in the <head></head> of the HTML doc
+        self.__head = '''
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <title>{self.title}</title>
+                <link href={self.css}; rel='stylesheet' />
+        </head>
+        <body>
+        '''
+
+        # html blank body attribute to be filled later by the form or result attr.
+        self.__body = ""
+
+        # closing tags to complete the html document
+        self.__close = '''
+        </body>
+        </html>
+        '''
+        self.complete = ""
+
+    # def build_page(self):
+    #     self.complete = self.head + self.body + self.close
+    #     self.complete = self.complete.format(**locals())
+
+    @property
+    def title(self):
+        return self.__title
+
+    @title.setter
+    def title(self, new_title):
+        self.__title = new_title
+
+    @property
+    def css(self):
+        return self.__css
+
+    @css.setter
+    def css(self, new_css):
+        self.__css = new_css
+
+    @property
+    def head(self):
+        return self.__head
+
+    @head.setter
+    def head(self, new_head):
+        self.__head = new_head
+
+    @property
+    def body(self):
+        return self.__body
+
     @body.setter
     def body(self, new_body):
         self.__body = new_body
 
-    @complete_page.setter
-    def complete_page(self, new_complete_page):
-        self.__complete_page = new_complete_page
+    @property
+    def close(self):
+        return self.__close
 
-    @form.setter
-    def form(self, new_form):
-        self.__form = new_form
+    @close.setter
+    def close(self, new_close):
+        self.__close = new_close
 
-    @result.setter
-    def result(self, new_result):
-        self.__result = new_result
-
-    @form_page.setter
-    def form_page(self, new_form_page):
-        self.__form_page = new_form_page
-
-    @result_page.setter
-    def result_page(self, new_result_page):
-        self.__result_page = new_result_page
+    def print_page(self):
+        self.all = self.__head + self.__body + self.__close
+        return self.all
