@@ -1,5 +1,6 @@
+from __future__ import division
 import webapp2
-from library import SaleItem
+from library import SaleItem, PriceChecker
 from pages import FormPage, ResultPage
 
 
@@ -7,14 +8,22 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         fp = FormPage()
         rp = ResultPage()
+        page = ''
 
         if self.request.GET:
             # store info from the form
-            item = self.request.GET['item_name']
-            price = self.request.GET['original_price']
+            item = self.request.GET['item']
+            price = self.request.GET['price']
             discount = self.request.GET['discount']
             qty = self.request.GET['qty']
-            i = SaleItem(item, price, discount, qty)
+            self.response.write("item: " + item + "Price: " + str(price) + "Discount: " + str(discount) + "Qty: " + str(qty))
+            i = PriceChecker(item, price, discount, qty)
+            qty = str(i.qty)
+            item = str(i.item)
+            discount = str(i.discount)
+            discount_amount = str(i.discount_amount)
+            discount_price = str(i.discount_price)
+            discount_saving = str(i.discount_saving)
             rp.body = '''
                     <header>
                         <h1>PriceCheckr</h1>
@@ -23,27 +32,15 @@ class MainHandler(webapp2.RequestHandler):
                         <h2>Details</h2>
                     </div>
                     <div class="details">
-                        <p> The {i.item} orignal price of ${i.price},
-                        after applying the {i.discount}%  discount, the new price is:</p>
-                        <p id="discount_price">${i.discount_price}</p>
-                        <p id="savings">You just saved $<span>{i.discount_savings}</p>
+                        <p> The {qty} {item} s original price of $ {price} ,
+                        after applying the {discount} %  discount, the new price is $ {discount_price} </p>
                     </div>
             '''
-            rp.body = rp.body.format(**locals())
             rp.print_page()
-
-            self.response.write(i.get_discount_amount(discount))
-
-            print(i.get_discount_price())
-            print(i.get_discount_saving())
-
+            rp.body = rp.body.format(**locals())
             self.response.write(rp.print_page())
         else:
             self.response.write(fp.print_page())
-
-        # show discount amount
-        # display final discount price
-        # show user how much they saved
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)

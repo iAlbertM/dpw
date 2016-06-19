@@ -25,24 +25,22 @@ class FormPage(object):
             <form method="get">
                 <h2>Item Info</h2>
                 <p class="input-field">
-                    <label for="item_name">Item Name</label>
-                    <input type="text" placeholder="item name" name="item_name">
+                    <label for="item">Item Name</label>
+                    <input type="text" placeholder="Item" name="item">
                 </p>
                 <hr>
-                <p class="input-field"><label for="original_price">
-                Original Price <span class="glyph">$</span></label>
-                    <input type="number" placeholder="Original price"
-                    name="original_price">
+                <p class="input-field"><label for="price"> Price $ </label>
+                    <input type="number" placeholder="Price" name="price">
                 </p>
                 <hr>
                 <p class="input-field">
-                    <label for="discount">Discount <span class="glyph">%</span> </label>
+                    <label for="discount">Discount % </label>
                     <input type="number" placeholder="Discount" name="discount">
                 </p>
                 <hr>
                 <p class="input-field">
-                    <label for="qty">Quantity <span class="glyph">#</span> </label>
-                    <input type="text" placeholder="qtyname" name="qty">
+                    <label for="qty">Quantity # </label>
+                    <input type="number" placeholder="Qty" name="qty">
                 </p>
                 <hr>
                 <input type="submit" value="submit" />
@@ -53,12 +51,7 @@ class FormPage(object):
         self.__close = '''
         </body>
         </html>
-        '''  
-        
-        self.complete = ""
-
-        self.complete = self.head + self.body + self.close
-        self.complete = self.complete.format(**locals())
+        '''
 
     @property
     def css(self):
@@ -117,7 +110,7 @@ class ResultPage(object):
         '''
 
         # html blank body attribute to be filled later by the form or result attr.
-        self.__body = ""
+        self.__body = ''
 
         # closing tags to complete the html document
         self.__close = '''
@@ -129,14 +122,6 @@ class ResultPage(object):
     # def build_page(self):
     #     self.complete = self.head + self.body + self.close
     #     self.complete = self.complete.format(**locals())
-
-    @property
-    def title(self):
-        return self.__title
-
-    @title.setter
-    def title(self, new_title):
-        self.__title = new_title
 
     @property
     def css(self):
@@ -161,7 +146,7 @@ class ResultPage(object):
     @body.setter
     def body(self, new_body):
         self.__body = new_body
-
+        self.print_page()
     @property
     def close(self):
         return self.__close
@@ -171,5 +156,6 @@ class ResultPage(object):
         self.__close = new_close
 
     def print_page(self):
-        self.all = self.__head + self.__body + self.__close
-        return self.all
+        all = self.__head + self.__body + self.__close
+        all = all.format(**locals())
+        return all
