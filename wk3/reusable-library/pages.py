@@ -146,7 +146,7 @@ class ResultPage(object):
     @body.setter
     def body(self, new_body):
         self.__body = new_body
-        self.print_page()
+
     @property
     def close(self):
         return self.__close
@@ -157,5 +157,4 @@ class ResultPage(object):
 
     def print_page(self):
         all = self.__head + self.__body + self.__close
-        all = all.format(**locals())
         return all

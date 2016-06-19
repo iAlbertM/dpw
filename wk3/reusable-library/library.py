@@ -12,6 +12,7 @@ class SaleItem(object):
         self.discount_amount = 0
         self.discount_price = 0
         self.discount_saving = 0
+        self.qty_price = 0
 
 
 class PriceChecker(SaleItem):
@@ -28,4 +29,6 @@ class PriceChecker(SaleItem):
         return self.discount_price
 
     def get_price_qty(self):
-        """ get the price for a select number of itemsslam """
+        """ get the price for a select number of an item """
+        self.qty_price = self.discount_price * self.qty
+        return self.qty_price
