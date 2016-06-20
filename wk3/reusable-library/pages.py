@@ -3,9 +3,6 @@ class FormPage(object):
     """ first page view class object """
     # initializing Page class
     def __init__(self):
-        # private property to hold: path to css file
-        self.__css = 'css/main.css'
-
         # all code that will go in the <head></head> of the HTML doc
         self.__head = '''
         <!DOCTYPE html>
@@ -13,7 +10,7 @@ class FormPage(object):
         <head>
                 <meta charset="UTF-8">
                 <title>"Albert Martinez | Reusable Library | DPW-1606 WDDBS Full Sail University"</title>
-                <link href={self.css}; rel='stylesheet' />
+                <link href=css/main.css; rel='stylesheet' />
         </head>
         <body>
         '''
@@ -53,14 +50,6 @@ class FormPage(object):
         </body>
         </html>
         '''
-
-    @property
-    def css(self):
-        return self.__css
-    
-    @css.setter
-    def css(self, new_css):
-        self.__css = new_css
 
     @property
     def head(self):
@@ -104,8 +93,8 @@ class ResultPage(object):
         <html lang="en">
         <head>
                 <meta charset="UTF-8">
-                <title>{self.title}</title>
-                <link href="{self.css}"; rel='stylesheet' />
+                <title>Albert Martinez | Result Page</title>
+                <link href="css/main.css"; rel='stylesheet' />
         </head>
         <body>
         '''
@@ -119,14 +108,6 @@ class ResultPage(object):
         </html>
         '''
         self.complete = ""
-
-    @property  # creating getter
-    def css(self):
-        return self.__css
-
-    @css.setter  # creating setter
-    def css(self, new_css):  # passing new prop. value as an arg
-        self.__css = new_css  # setting the attribute's new prop value
 
     @property  # creating getter
     def head(self):
