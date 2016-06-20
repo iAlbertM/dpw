@@ -10,7 +10,7 @@ class FormPage(object):
         <head>
                 <meta charset="UTF-8">
                 <title>"Albert Martinez | Reusable Library | DPW-1606 WDDBS Full Sail University"</title>
-                <link href=css/main.css; rel='stylesheet' />
+                <link href="css/main.css"; rel='stylesheet' />
         </head>
         <body>
         '''
