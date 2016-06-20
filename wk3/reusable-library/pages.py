@@ -1,5 +1,6 @@
 # first page view class: FormPage
 class FormPage(object):
+    """ first page view class object """
     # initializing Page class
     def __init__(self):
         # private property to hold: path to css file
@@ -104,7 +105,7 @@ class ResultPage(object):
         <head>
                 <meta charset="UTF-8">
                 <title>{self.title}</title>
-                <link href={self.css}; rel='stylesheet' />
+                <link href="{self.css}"; rel='stylesheet' />
         </head>
         <body>
         '''
@@ -119,42 +120,38 @@ class ResultPage(object):
         '''
         self.complete = ""
 
-    # def build_page(self):
-    #     self.complete = self.head + self.body + self.close
-    #     self.complete = self.complete.format(**locals())
-
-    @property
+    @property  # creating getter
     def css(self):
         return self.__css
 
-    @css.setter
-    def css(self, new_css):
-        self.__css = new_css
+    @css.setter  # creating setter
+    def css(self, new_css):  # passing new prop. value as an arg
+        self.__css = new_css  # setting the attribute's new prop value
 
-    @property
+    @property  # creating getter
     def head(self):
         return self.__head
 
-    @head.setter
-    def head(self, new_head):
-        self.__head = new_head
+    @head.setter  # creating setter
+    def head(self, new_head):  # passing new prop. value as an arg
+        self.__head = new_head  # setting the attribute's new prop value
 
-    @property
+    @property  # creating getter
     def body(self):
         return self.__body
 
-    @body.setter
-    def body(self, new_body):
-        self.__body = new_body
+    @body.setter  # creating setter
+    def body(self, new_body):  # passing new prop. value as an arg
+        self.__body = new_body  # setting the attribute's new prop value
 
-    @property
+    @property  # creating getter
     def close(self):
         return self.__close
 
-    @close.setter
-    def close(self, new_close):
-        self.__close = new_close
+    @close.setter  # creating setter
+    def close(self, new_close):  # passing new prop. value as an arg
+        self.__close = new_close  # setting the attribute's new prop value
 
     def print_page(self):
-        all = self.__head + self.__body + self.__close
-        return all
+        elem = (self.__head + self.__body + self.__close)
+        return elem
