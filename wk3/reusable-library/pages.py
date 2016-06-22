@@ -19,26 +19,27 @@ class FormPage(object):
         self.__body = '''
             <header>
                 <h1>PriceCheckr</h1>
+                <p>Find out the final price of an item with a specific percent off. Just enter the item's details bellow: </p>
             </header>
             <form method="get">
                 <h2>Item Info</h2>
                 <p class="input-field">
                     <label for="item">Item Name</label>
-                    <input type="text" placeholder="Item" name="item">
+                    <input type="text" placeholder="i.e.: 6 Mechanical Pencils" name="item">
                 </p>
                 <hr>
                 <p class="input-field"><label for="price"> Price $ </label>
-                    <input type="number" placeholder="Price" name="price">
+                    <input type="number" placeholder="0.00" name="price">
                 </p>
                 <hr>
                 <p class="input-field">
                     <label for="discount">Discount % </label>
-                    <input type="number" placeholder="Discount" name="discount">
+                    <input type="number" placeholder="50" name="discount">
                 </p>
                 <hr>
                 <p class="input-field">
                     <label for="qty">Quantity # </label>
-                    <input type="number" placeholder="Qty" name="qty">
+                    <input type="number" placeholder="" name="qty">
                 </p>
                 <hr>
                 <input type="submit" value="submit" />
