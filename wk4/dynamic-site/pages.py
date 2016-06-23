@@ -22,9 +22,7 @@ class Page(object):
 class ContentPage(Page):
     def __init__(self):
         def super(FormPage, self).__init__()
+        self._body = '''
 
-    self.name = ''
-    self.nation = ''
-    self.ability = ''
-    self.skill = ''
-    self.original = ''
+        '''
+
