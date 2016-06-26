@@ -1,51 +1,58 @@
-# the Parent Data class / abstract class: template for DataObjects
+# DataObject Class: Template used to create like-objects in other classes
 class Character(object):
-    def __init__(self):
+    def __init__(self):  # turn object on
+        # default attributes for this object's instances
         self.name = ''
         self.nation = ''
         self.ability = ''
         self.skill = ''
         self.special = ''
+        self.image = ''
 
 
-# DataObject class: subclass with hardcoded data
-class MainCharacter(Character):
-    def __init__(self):  # initialising function for subclass
-        super(MainCharacter, self).__init__()
+# Data Class - store all DataObjects to simulate a database
+class CharacterData(object):
+    """ CHARACTER DATABASE """
+    def __init__(self):  # initialize-turn on
         # aang - creating an instance of the Character class object
         aang = Character()
         aang.name = 'Aang'
         aang.nation = 'Air Nomads'
-        aang.ability = 'Air Bender'
-        aang.skill = 'Quick and Light on his feet'
-        aang.special = 'the Avatar: bender of all elements'
+        aang.ability = 'Airbender'
+        aang.skill = 'Avatar State'
+        aang.official = 'the Avatar: bender of all elements'
+        aang.image = 'img/aang.jpg'
         # katara - creating an instance of the Character class object
         katara = Character()
         katara.name = 'Katara'
         katara.nation = 'Southern Water Tribe'
-        katara.ability = 'Water Bending'
+        katara.ability = 'Waterbender'
         katara.skill = 'Healing & Blood Bending'
-        katara.special = 'Waterbending Master & Teacher'
+        katara.official = 'Waterbending Master & Teacher'
+        katara.image = 'img/katara.jpg'
         # sokka - creating an instance of the Character class object
         sokka = Character()
         sokka.name = 'Sokka'
         sokka.nation = 'Southern Water Tribe'
         sokka.ability = 'Warrior'
         sokka.skill = 'Tactician & Swords Master'
-        sokka.special = 'Chief of the Southern Water Tribe & the United Republic Council'
+        sokka.official = 'Chief of the Southern Water Tribe & the United Republic Council'
+        sokka.image = 'img/sokka.jpg'
         # toph - creating an instance of the Character class object
         toph = Character()
         toph.name = 'Toph Beifong'
         toph.nation = 'Earth Kingdom'
-        toph.ability = 'Earth Bender'
+        toph.ability = 'Earthbender'
         toph.skill = 'Metalbender and blind but can "see" through vibrations in the earthl'
-        toph.special = 'Earthbending Master & Teacher'
+        toph.official = 'Earthbending Master & Teacher'
+        toph.image = 'img/toph.jpg'
         # zuko - creating an instance of the Character class object
         zuko = Character()
         zuko.name = 'Zuko'
         zuko.nation = 'Fire Nation'
-        zuko.ability = 'Fire Bender'
+        zuko.ability = 'Firebender'
         zuko.skill = 'Redirect Lightning\nDual Dao swordsmanship'
-        zuko.special = 'Prince Zuko / Fire Lord Zuko'
+        zuko.official = 'Prince Zuko / Fire Lord Zuko'
+        zuko.image = 'img/zuko.jpg'
 
         self.characters = [aang, katara, sokka, toph, zuko]
