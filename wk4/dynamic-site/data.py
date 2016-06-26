@@ -21,7 +21,7 @@ class CharacterData(object):
         aang.ability = 'Airbender'
         aang.skill = 'Avatar State'
         aang.official = 'the Avatar: bender of all elements'
-        aang.image = 'img/aang.jpg'
+        aang.image = 'img/aang.png'
         # katara - creating an instance of the Character class object
         katara = Character()
         katara.name = 'Katara'
@@ -29,7 +29,7 @@ class CharacterData(object):
         katara.ability = 'Waterbender'
         katara.skill = 'Healing & Blood Bending'
         katara.official = 'Waterbending Master & Teacher'
-        katara.image = 'img/katara.jpg'
+        katara.image = 'img/katara.png'
         # sokka - creating an instance of the Character class object
         sokka = Character()
         sokka.name = 'Sokka'
@@ -37,7 +37,7 @@ class CharacterData(object):
         sokka.ability = 'Warrior'
         sokka.skill = 'Tactician & Swords Master'
         sokka.official = 'Chief of the Southern Water Tribe & the United Republic Council'
-        sokka.image = 'img/sokka.jpg'
+        sokka.image = 'img/sokka.png'
         # toph - creating an instance of the Character class object
         toph = Character()
         toph.name = 'Toph Beifong'
@@ -45,7 +45,7 @@ class CharacterData(object):
         toph.ability = 'Earthbender'
         toph.skill = 'Metalbender and blind but can "see" through vibrations in the earthl'
         toph.official = 'Earthbending Master & Teacher'
-        toph.image = 'img/toph.jpg'
+        toph.image = 'img/toph.png'
         # zuko - creating an instance of the Character class object
         zuko = Character()
         zuko.name = 'Zuko'
@@ -53,6 +53,6 @@ class CharacterData(object):
         zuko.ability = 'Firebender'
         zuko.skill = 'Redirect Lightning\nDual Dao swordsmanship'
         zuko.official = 'Prince Zuko / Fire Lord Zuko'
-        zuko.image = 'img/zuko.jpg'
+        zuko.image = 'img/zuko.png'
 
         self.characters = [aang, katara, sokka, toph, zuko]

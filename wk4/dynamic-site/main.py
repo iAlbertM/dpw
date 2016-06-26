@@ -26,12 +26,12 @@ class MainHandler(webapp2.RequestHandler):
             # check if character_id prints out the character that was clicked
             # print(character_name)
             # package the stats to send to the view
-            character_stats_model += '\t\t<p class="stats">Name: ' + character_name + '</p>\n'
-            character_stats_model += '\t\t<p class="stats">Nation: ' + character_nation + '</p>\n'
-            character_stats_model += '\t\t<p class="stats">Ability: ' + character_ability + '</p>\n'
-            character_stats_model += '\t\t<p class="stats">Skill: ' + character_skill + '</p>\n'
-            character_stats_model += '\t\t<p class="stats">Title(s): ' + character_official + '</p>\n'
-            character_stats_model += '\t\t<p class="stats">Photo: ' + character_image + '</p>\n'
+            character_stats_model += '\t<p class="stats">Name: ' + character_name + '</p>\n'
+            character_stats_model += '\t<p class="stats">Nation: ' + character_nation + '</p>\n'
+            character_stats_model += '\t<p class="stats">Ability: ' + character_ability + '</p>\n'
+            character_stats_model += '\t<p class="stats">Skill: ' + character_skill + '</p>\n'
+            character_stats_model += '\t<p class="stats">Title(s): ' + character_official + '</p>\n'
+            character_stats_model += '<div class="img">\n\t<img src=\"' + character_image +'" alt="Photo of ' + character_name + '\"></div>'
 
             p._char_string = character_stats_model
             # if true: load the characters stats into a list to send to the view
