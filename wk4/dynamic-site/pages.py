@@ -20,11 +20,11 @@ class Page(object):  # create a Page/abstract class as template for other pages
         '''
         # links for each of the individual characters' page
         self._links = '''
-                        <li><a href="?name=Aang&ability=Airbender">Aang</a></li>
-                        <li><a href="?name=Katara&ability=Waterbender">Katara</a></li>
-                        <li><a href="?name=Sokka&ability=Warrior">Sokka</a></li>
-                        <li><a href="?name=Toph&ability=Earthbender">Toph</a></li>
-                        <li><a href="?name=Zuko&ability=Firebender">Zuko</a></li>
+                        <li><a href="?id=0">Aang</a></li>
+                        <li><a href="?id=1">Katara</a></li>
+                        <li><a href="?id=2">Sokka</a></li>
+                        <li><a href="?id=3">Toph</a></li>
+                        <li><a href="?id=4">Zuko</a></li>
         '''
         self._body = '''
                     </ul>
