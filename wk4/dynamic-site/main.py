@@ -14,26 +14,35 @@ class MainHandler(webapp2.RequestHandler):
         c = CharacterData()  # creates an instance of the characters list from database
         character_stats_model = ''  # use to package the character stats for the view
         if self.request.GET:  # check if there are any variables in the URL
-            # if so, store the key:value in a variable
+            # if so, store the key:value in a variable to use it later when retrieving info from CharacterData class
             character_id = int(self.request.GET['id'])
-            # store the name of the character retrieved from characters array at index of character_id
+
+            # RETRIEVE DATA: from CharacterData class based on information from request.GET
+            # STORE: each stat into its own variable so that it can be more easily accessible
             character_name = c.characters[character_id].name
             character_nation = c.characters[character_id].nation
             character_ability = c.characters[character_id].ability
             character_skill = c.characters[character_id].skill
             character_official = c.characters[character_id].official
             character_image = c.characters[character_id].image
-            # check if character_id prints out the character that was clicked
-            # print(character_name)
-            # package the stats to send to the view
-            character_stats_model += '\t<p class="stats">Name: ' + character_name + '</p>\n'
-            character_stats_model += '\t<p class="stats">Nation: ' + character_nation + '</p>\n'
-            character_stats_model += '\t<p class="stats">Ability: ' + character_ability + '</p>\n'
-            character_stats_model += '\t<p class="stats">Skill: ' + character_skill + '</p>\n'
-            character_stats_model += '\t<p class="stats">Title(s): ' + character_official + '</p>\n'
-            character_stats_model += '<div class="img">\n\t<img src=\"' + character_image +'" alt="Photo of ' + character_name + '\"></div>'
+            character_description = c.characters[character_id].description
 
+            # QUICK STATUS CHECK CODE  -- NOT NEEDED FOR APP TO RUN JUST A CHECKPOINT TO ENSURE IT WAS WORKING AT ALL
+            #   print(character_name)  #   check if character_id prints out the character that was clicked
+            # PACKAGING DATA RETREIVED FROM DATABASE: package the stats to send to the view
+            p.body = '''</ul>\n</nav>\n</header>\n<div id="details">\n\t'''
+            p.body += '<h3 class="label">Description: \t</h3>\n<p>' + character_description + '</p>\n</div>\n'
+
+            # creating the Character Stats section for each page concatenating the values from the request + html tags
+            character_stats_model += '<div id="' + character_name + '-stats\">\n'
+            character_stats_model +=    '\t<div class="character-image">\n\t<img src="' + character_image+'" alt="Photo of ' + character_name + '"> \n</div>'
+            character_stats_model +=    '\t<p class="stats"><span class="label">Name:</spatn>\t' + character_name + '</p>\n'
+            character_stats_model +=    '\t<p class="stats"><span class="label">Nation:\t </span>\t' + character_nation + '</p>\n'
+            character_stats_model +=    '\t<p class="stats"><span class="label">Ability:\t </span>\t' + character_ability + '</p>\n'
+            character_stats_model +=    '\t<p class="stats"><span class="label">Skill:\t </span>\t' + character_skill + '</p>\n'
+            character_stats_model +=    '\t<p class="stats"><span class="label">Title(s):\t </span>\t' + character_official + '</p>\n</div>\n'
             p._char_string = character_stats_model
+
             # if true: load the characters stats into a list to send to the view
             # p.char_list.append(name, nation, ability, skill, official, image)
             self.response.write(p.print_it())
@@ -44,12 +53,3 @@ class MainHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
-# nation = 'Nation: ' + self.request.GET['nation']  # nation = c.characters[0].nation
-# ability = 'Ability: ' + self.request.GET['ability']  # ability = c.characters[0].ability
-# skill = 'Skill: ' + self.request.GET['skill']  # skill = c.characters[0].skill
-# official = 'Special: ' + self.request.GET['official']  # official = c.characters[0].official
-# image = 'Image: ' + self.request.GET['image']  # image = c.characters[0].image
-# check if the data in request matches a characters name
-
-# p.char_string = (name + nation + ability + skill + official + image)
-# p.content = p.content.format(**locals())
