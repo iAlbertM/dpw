@@ -8,6 +8,7 @@ handlers:
 - url: /css
   static_dir: css
 
+handlers:
 - url: /img
   static_dir: img
 

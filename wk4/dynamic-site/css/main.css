@@ -99,13 +99,14 @@ hr {
 
 html {
     width: 100%
+    min-height: 100%;
 }
 
 body {
     width: 100%;
-    background-color: white;
-    background-image: url('img/aabg.jpg');
-    background-size:cover;
+    background-image: url('../img/lightpaperfibers.png');
+    /*background-size:cover;*/
+    background-repeat:repeat;
     box-sizing: border-box;
     font: normal normal 100%/1.5 'Acme', sans-serif;
     padding: 5px 2%;
@@ -134,27 +135,6 @@ body {
     -ms-flex-align: stretch;
     align-items: stretch;
 }
-@media (min-width: 700px) {
-    #wrapper {
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-        flex-direction: column;
-    }
-}
-div {
--webkit-order: 0;
--ms-flex-order: 0;
-order: 0;
--webkit-flex: 0 1 auto;
--ms-flex: 0 1 auto;
-flex: 0 1 auto;
--webkit-align-self: auto;
-align-self: auto;
-}
-
 
 .details {
     display: block;
@@ -211,15 +191,14 @@ p {
     color: rgba(135, 125, 136, 1);
 }
 
-nav, nav ul, nav ul, li {
+nav, nav ul, nav ul, li a:link{
     display: block;
-    font-size 30
+    font-size: 3rem;
 }
 div.stats, #Aang-stats, #Katara-stats, #Sokka-stats, #Toph-stats, #Zuko-stats {
     font-size: 1.8rem;
     box-sizing: border-box;
     width: 100%;
-    display: block;
     border-radius: 6px;
     border: inset dotted rgba(0, 0, 0, 0.4);
     padding: 5px 10px;
@@ -249,16 +228,22 @@ div.stats, #Aang-stats, #Katara-stats, #Sokka-stats, #Toph-stats, #Zuko-stats {
 p.stats {
     color: cornsilk;
 }
-#Aang-stats, #Katara-stats, #Sokka-stats, #Toph-stats, #Zuko-stats, div.character-imaage {
-    display: block;
-    max-height: 100px;
+
+div.img {
     max-width: 100%;
-    left: 50px;
-    top: 140px;
-    background-color: white;;
+    margin: 50px;
 }
-img {
-    max-width: 100%;
+
+nav li {
+    display: block;
+}
+
+nav li a {
+    display: block;
+    padding: 5px; 15px;
+    line-height: 1.5;
+    font-size: 1.6rem;
+    margin-right: 10px 0;
 }
 
 @media (min-width: 530px) {
@@ -271,20 +256,23 @@ img {
     .character-image {
         max-height: 100px;
         max-width: 100%;
+        margin: 50px auto;
     }
 
     #Aang-stats, #Katara-stats, #Sokka-stats, #Toph-stats, #Zuko-stats, div.character-imaage {
         display: block;
-        max-height: 100px;
-        max-width: 100%;
-        left: 50px;
-        top: 140px;
-        background-color: white;;
+        z-index: 0;
     }
 
     img {
         max-width: 100%;
     }
 
-    #
+    nav li {
+        display: inline-block;
+        padding: 5px;
+        15px;
+        line-height: 1.5;
+        font-size: 1.6rem;
+    }
 }
