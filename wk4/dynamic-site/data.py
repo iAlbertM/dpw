@@ -29,7 +29,7 @@ class CharacterData(object):
         aang.nation = 'Air Nomads'
         aang.ability = 'Airbender'
         aang.skill = 'Avatar State'
-        aang.official = 'the Avatar: bender of all elements'
+        aang.official = 'the Avatar'
         aang.image = 'img/aang.png'
         aang.description = 'Aang is the fun-loving, 112-year-old protagonist of the series, who is biologically twelve years old but was frozen in an iceberg for one hundred years. He is the current incarnation of the Avatar, the spirit of the world manifested into human form, whose duty is to maintain balance among the nations of the world. Aang is a reluctant hero, who would prefer adventure over his job as the Avatar and making friends over fighting the Fire Nation.'  # Source: Avatar: The Last Airbender. (2016). Avatar Wiki. Retrieved from http://avatar.wikia.com/wiki/Avatar:_The_Last_Airbender
         # katara - creating an instance of the Character class object

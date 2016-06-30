@@ -42,9 +42,7 @@ class Page(object):  # create a Page/abstract class as template for other pages
                     <p class="intro">This is the Avatar mini Character Profiles Site. Here you can find out a little bit about your favorite good main characters from the show Avatar: The Last Airbender. If you never heard of this show here's a brief description straight from the Avatar Wiki Parent Page:</p>\n<p<The human civilization is divided into four, though eventually five, nations: the Water Tribes, the Earth Kingdom, the Air Nomads, the Fire Nation, and the United Republic of Nations. Each nation has its own natural element, on which it bases its society, and within each nation exist people known as "benders" who have the innate power and ability to control and manipulate, or "bend", the eponymous element of their nation. Each generation yields one person who is capable of controlling and manipulating all four elements, the Avatar, whose job it is to keep the four nations in harmony, and maintain world peace and order.</p>\n<p>Explore the mystical world of Avatar the last airbender characters and their profiles. Much of the description for Sokka, Toph, and Katara came from the awesome and incredible wiki page authors and contributors on their <a href="http://goo.gl/vlffPn" class="link inline">Avatar Wiki Page</a>
                     </p>
         '''
-        self._close = '''</div>
-        </div>
-    <footer>
+        self._close = '''<footer>
     <p>This site uses material from the <a href="http://avatar.wikia.com/wiki/Avatar:_The_Last_Airbender" class="link inline">"Avatar: The Last Airbender" wiki</a> at Wikia and is licensed under the <a href="http://wikia.com/Licensing" class="link inline">Creative Commons Attribution-Share Alike License 3.0 (Unported) (CC-BY-SA)</a>.</p
     </footer>
 </body>
